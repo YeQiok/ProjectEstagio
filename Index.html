@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <script type="module" src="src/Tarefascript.js"></script>
+    <!-- Css link -->
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="screen">
+    <!-- Boxicon CDN -->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+
+
+    <div class="popup-wrapper-1 display-off" id="popUpOpcoes" name="">
+        <div class="popup-1">
+            <div class="popup-content-1">
+                <div class="popuptext-1 ">
+                    <i class='bx bxs-edit-alt' style="height: 30px; color: #9E9E9E; font-size: 16px; ">Atualizar tarefa</i></br>
+                    <i class='bx bxs-trash-alt' style="color: #9E9E9E; font-size: 16px;">Remover tarefa</i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <i class="fa fa-ellipsis-v display-off" id="tres-pontos" aria-hidden="true"></i>
+
+
+    <!-- SideBar -->
+    <div class="sidebar">
+        <div class="logo_content">
+            <div class="logo">
+                <i class='bx bxl-react'></i>
+                <div class="logo_name">WLS Soluções</div>
+            </div>
+            <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="nav_lista">
+            <li>
+                <i class='bx bx-search-alt'></i>
+                <input type="text" placeholder="Search...">
+                <span class="tooltip">Search</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-task'></i>
+                    <span class="links_1">Tarefas</span>
+                </a>
+                <span class="tooltip">Tarefas</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-exclamation-circle"></i>
+                    <span class="links_1">Sobre</span>
+                </a>
+                <span class="tooltip">Sobre</span>
+            </li>
+        </ul>
+        <!-- Usuario -->
+        <div class="usuario_content">
+            <div class="usuario">
+                <div class="usuario_detalhes">
+                    <img src="img/face.png" alt="Profile">
+                    <div class="Profissao">
+                        <div class="nome">Luis Felipe</div>
+                        <div class="trabalho">Aprendiz de Desenvolvedor</div>
+                    </div>
+                </div>
+                <i class='bx bx-log-out' id="log-out"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="home_content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <div class="text">
+                        <div class="flexbox">
+                            <ul id="listatarefa">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup-wrapper">
+        <div class="popup">
+            <div class="popup-content">
+                <h5 style="color: black;"><b>Editar Tarefa</b></h5>
+                <div class="popuptext">
+                    <input type="text" name="titulo" id="titulo" required="" placeholder="Nome" style="border-radius: 6px; height: 40px; border-color: #9E9E9E;" />
+                    <label></label>
+                    <input type="text" name="descricao" id="descricao" placeholder="Descrição Grande." style="border-radius: 6px; height:  80px; border-color: #9E9E9E;" />
+                </div>
+                <div class="popup-close">
+                    Cancelar
+                </div>
+                <div class="popup-salvar" click="makePost()">
+                    Salvar
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="botao">
+            <i class='bx bx-plus' style="text-align: center;">
+                Nova Tarefa
+            </i>
+        </button>
+    <div class="popup-wrapper">
+        <div class="popup">
+            <div class="popup-content">
+                <h5><b>Criar tarefa</b></h5>
+                <div class="popuptext">
+                    <input type="text" name="titulo" class="titulo" required="" placeholder="Nome" style="border-radius: 6px; height: 40px; border-color: #9E9E9E;" />
+                    <label placeholder="Adaptive" Placeholder alt="Placeholder"></label>
+                    <input type="text" name="descricao" class="descricao" placeholder="Descrição Grande." style="border-radius: 6px; height:  80px; border-color: #9E9E9E;" />
+
+
+                </div>
+            </div>
+            <div class="popup-close">
+                Cancelar
+            </div>
+            <div class="popup-salvar" click="makePost()">
+                Salvar
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+    <!-- Sidebar Script -->
+    <script>
+        let sidebar = document.querySelector(".sidebar");
+        let sidebarBtn = document.querySelector(".bx-menu");
+        let searchBtn = document.querySelector(".bx-search-alt");
+        let taskBtn = document.querySelector(".bx-task");
+        let aboutBtn = document.querySelector(".fa-exclamation-circle");
+        let logBtn = document.querySelector(".bx-log-out");
+
+        console.log(searchBtn);
+        console.log(sidebarBtn);
+        console.log(taskBtn);
+        console.log(aboutBtn);
+        console.log(logBtn);
+
+        sidebarBtn.onclick = function() {
+            sidebar.classList.toggle("active");
+        };
+        searchBtn.onclick = function() {
+            sidebar.classList.toggle("active");
+        };
+        taskBtn.onclick = function() {
+            sidebar.classList.toggle("active");
+        };
+        aboutBtn.onclick = function() {
+            sidebar.classList.toggle("active");
+        };
+        logBtn.onclick = function() {
+            sidebar.classList.toggle("active");
+        };
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- <script src="src/Tarefascript.js"></script> -->
+    <script src="src/tarefaform.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</body>
+
+</html>
